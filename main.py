@@ -12,38 +12,22 @@ def Type(t): #Word typing control
         time.sleep(random.random()*10.0/wpm)
 
 def qBasic():
-    #while True:
     while True:
         temp = input("\n⇥   ")
-        if tempPos4 != 1989:
-            match temp:
-                case "1":
-                    pos = tempPos1
-                    return pos
-                case "2":
-                    pos = tempPos2
-                    return pos
-                case "3":
-                    pos = tempPos3
-                    return pos    
-                case "4":
-                    pos = tempPos4
-                    return pos
-                case _:
-                    print("\nInvalid")
-        if tempPos4 == 1989:
-            match temp:
-                case "1":
-                    pos = tempPos1
-                    return pos
-                case "2":
-                    pos = tempPos2
-                    return pos
-                case "3":
-                    pos = tempPos3
-                    return pos    
-                case _:
-                    print("\nInvalid")
+        if temp == "1" and tempPos1 != 1989:
+            pos = tempPos1
+            return pos
+        if temp == "2" and tempPos2 != 1989:
+            pos = tempPos2
+            return pos
+        if temp == "3" and tempPos3 != 1989:
+            pos = tempPos3
+            return pos
+        if temp == "4" and tempPos4 != 1989:
+            pos = tempPos4
+            return pos
+        print("Invalid")
+       
 
 while True: #Start Game
     temp = input("start game? y/n: ").lower()
@@ -72,19 +56,45 @@ while True: #Pos 0
         tempPos3 = 1.12 #Turn right to living room
         tempPos4 = 0 #Exit house
         pos = qBasic()
-    if pos == 1.11: #Kitchen
-        Type("You step onto the black & white checkered floor. Close beside you to your left is a line of smooth white cabinets. ")
-        Type("\n1)Search cabinet\n2)Search drawer\n3)Turn right to the living room\n4)Return to entrance")
-        tempPos1 = 1.111 #Search cabinet
-        tempPos2 = 1.112 #Seach drawer
-        tempPos3 = 1.12 #Turn right to living room
-        tempPos4 = 1 #Return to entrance
-        pos = qBasic()
-    if pos == 1.12: #Living Room
-        Type("The hard wood creaks below you as you enter the living room. You aproach the window and look outside. It is dark.")
-        Type("\n1)Look outside\n2)Go to kitchen\n3)Return to entrance")
-        tempPos1 = 1.21 #Look outside
-        tempPos2 = 1.11 #Go to kitchen
-        tempPos3 = 1.12 #Return to entrance
-        tempPos4 = 1989 #Does nothing
-        pos = qBasic()
+    if True: #Kitchen
+        if pos == 1.11: #Kitchen
+            Type("You step onto the black & white checkered floor. Close beside you to your left is a line of smooth white cabinets. ")
+            Type("\n1)Search cabinet\n2)Search drawer\n3)Turn right to the living room\n4)Return to entrance")
+            tempPos1 = 1.111 #Search cabinet
+            tempPos2 = 1.112 #Seach drawer
+            tempPos3 = 1.12 #Turn right to living room
+            tempPos4 = 1 #Return to entrance
+            pos = qBasic()
+        if pos == 1.111: #Kitchen cabinet
+            Type("You open the cabinet. There is nothing.")
+            Type("\n1)Return")
+            tempPos1 = 1.11 #Return to kitchen
+            tempPos2 = 1989 #Does nothing
+            tempPos3 = 1989 #Does nothing
+            tempPos4 = 1989 #Does nothing
+            pos = qBasic()
+        if pos == 1.112: #Kitchen drawer
+            Type("You pull open the drawer and peer inside.")
+            Type("\n1)Take spoon\n2)Take canned beans\n3)Return")
+            tempPos1 = 1.11 #Return to kitchen
+            tempPos2 = 1989 #Does nothing
+            tempPos3 = 1989 #Does nothing
+            tempPos4 = 1989 #Does nothing
+            pos = qBasic()
+    if True: #Living Room
+        if pos == 1.12: #Living Room
+            Type("The hard wood creaks below you as you enter the living room.")
+            Type("\n1)Look outside\n2)Go to kitchen\n3)Return to entrance")
+            tempPos1 = 1.121 #Look outside
+            tempPos2 = 1.11 #Go to kitchen
+            tempPos3 = 1.12 #Return to entrance
+            tempPos4 = 1989 #Does nothing
+            pos = qBasic()
+        if pos == 1.121: #Living Room Window
+            Type("You aproach the window and look outside. It is dark. You see the faint outlines of trees")
+            Type("\n1)Return")
+            tempPos1 = 1.12 #Look outside
+            tempPos2 = 1989 #Does nothing
+            tempPos3 = 1989 #Does nothing
+            tempPos4 = 1989 #Does nothing
+            pos = qBasic()
