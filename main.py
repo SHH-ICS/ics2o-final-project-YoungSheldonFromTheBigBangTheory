@@ -73,14 +73,12 @@ while True: #Pos 0
             tempPos3 = 1989 #Does nothing
             tempPos4 = 1989 #Does nothing
             pos = qBasic()
-        if pos == 1.112: #Kitchen drawer
+        if pos == 1.112: #Kitchen drawer  DOES NOT WORK
             Type("You pull open the drawer and peer inside.")
-            Type("\n1)Take spoon\n2)Take canned beans\n3)Return")
-            tempPos1 = 1.11 #Return to kitchen
-            tempPos2 = 1989 #Does nothing
-            tempPos3 = 1989 #Does nothing
-            tempPos4 = 1989 #Does nothing
-            pos = qBasic()
+            Type("\n1)Take", colored('spoon', 'red'), "\n2)Take", colored('canned beans', 'red'), "\n3)Return")
+            temp = input("\n⇥   ")
+            if temp 
+
     if True: #Living Room
         if pos == 1.12: #Living Room
             Type("The hard wood creaks below you as you enter the living room.")
