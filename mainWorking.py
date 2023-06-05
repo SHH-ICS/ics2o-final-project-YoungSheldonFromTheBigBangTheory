@@ -1,11 +1,14 @@
 #python3 -m pip install --upgrade termcolor
-import math, sys, random, json, time
+import math, sys, random, json, time, glob
 from termcolor import colored, cprint
+from Inventory import *
 
+Inventory.inventory.append()
 
 class Scene:
     Room:str = "kitchen"
     Target:str = None
+
 
 pos = float(0)
 
