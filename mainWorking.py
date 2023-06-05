@@ -3,6 +3,10 @@ import math, sys, random, json, time
 from termcolor import colored, cprint
 
 
+class Scene:
+    Room:str = "kitchen"
+    Target:str = None
+
 pos = float(0)
 
 wpm = 85 #wpm
@@ -68,7 +72,7 @@ while True: #Pos 0
         tempPos3 = 1.12 #Turn right to living room
         tempPos4 = 0 #Exit house
         pos = qBasic()
-    if True: #Kitchen
+    if Scene.Room.lower() == "kitchen": #Kitchen
         if pos == 1.11: #Kitchen
             Type("You step onto the black & white checkered floor. Close beside you to your left is a line of smooth white cabinets. ")
             Type("\n1)Search cabinet\n2)Search drawer\n3)Turn right to the living room\n4)Return to entrance")
@@ -77,14 +81,14 @@ while True: #Pos 0
             tempPos3 = 1.12 #Turn right to living room
             tempPos4 = 1 #Return to entrance
             pos = qBasic()
-        if pos == 1.111: #Kitchen cabinet
-            Type("You open the cabinet. There is nothing.")
-            Type("\n1)Return")
-            tempPos1 = 1.11 #Return to kitchen
-            tempPos2 = 1989 #Does nothing
-            tempPos3 = 1989 #Does nothing
-            tempPos4 = 1989 #Does nothing
-            pos = qBasic()
+            if Scene.Target.lower() == "cabinet ": #Kitchen cabinet
+                Type("You open the cabinet. There is nothing.")
+                Type("\n1)Return")
+                tempPos1 = 1.11 #Return to kitchen
+                tempPos2 = 1989 #Does nothing
+                tempPos3 = 1989 #Does nothing
+                tempPos4 = 1989 #Does nothing
+                pos = qBasic()
         if pos == 1.112: #Kitchen drawer  DOES NOT WORK
             Type("You pull open the drawer and peer inside.")
             #Type("\n1)Take", colored('spoon', 'red'), "\n2)Take", colored('canned beans', 'red'), "\n3)Return")
@@ -108,3 +112,4 @@ while True: #Pos 0
             tempPos3 = 1989 #Does nothing
             tempPos4 = 1989 #Does nothing
             pos = qBasic()
+#
