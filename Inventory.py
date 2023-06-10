@@ -13,3 +13,5 @@ class Item():
 class Items():
     Spoon:Item = Item("Spoon", "Can hurt people")
     Beans:Item = Item("Beans", "Beans")
+
+#Inventory.inventory[0].check(Items.Spoon)

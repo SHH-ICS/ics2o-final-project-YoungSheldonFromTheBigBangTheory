@@ -1,9 +1,7 @@
 #python3 -m pip install --upgrade termcolor
-import math, sys, random, json, time, glob
+import sys, random, json, time
 from termcolor import colored, cprint
 from Inventory import *
-
-Inventory.inventory.append()
 
 class Scene:
     Room:str = "kitchen"
@@ -35,17 +33,17 @@ def qBasic(): #Basic Question(Movement)
             pos = tempPos4
             return pos
         print("Invalid")
-       
-def qInteract(): #Interaction
-    with open("Question.json", "r") as f:
-        f = json.loads(f.read())
 
-    if pos == (f["pos"]):
-        #print(f["pos"])
-        print("Answer 1:",(f["items"][0]))
-        print("Answer 2:",(f["items"][1]))
-        print("Answer 3:",(f["items"][2]))
-        print("Answer 4:",(f["items"][3]))
+def qInteract():
+    while True:
+        for item in Inventory.inventory:
+                item:Item
+                if item.Check(tempItem1) is False and tempItem1 != "null":
+                    Inventory.inventory.append(tempItem1) 
+                if item.Check(tempItem2) is False and tempItem2 != "null":
+                    Inventory.inventory.append(tempItem2) 
+                if item.Check(tempItem3) is False and tempItem3 != "null":
+                    Inventory.inventory.append(tempItem3)
 
 
 while True: #Start Game
@@ -75,7 +73,7 @@ while True: #Pos 0
         tempPos3 = 1.12 #Turn right to living room
         tempPos4 = 0 #Exit house
         pos = qBasic()
-    if Scene.Room.lower() == "kitchen": #Kitchen
+    if True: #Kitchen
         if pos == 1.11: #Kitchen
             Type("You step onto the black & white checkered floor. Close beside you to your left is a line of smooth white cabinets. ")
             Type("\n1)Search cabinet\n2)Search drawer\n3)Turn right to the living room\n4)Return to entrance")
@@ -84,35 +82,23 @@ while True: #Pos 0
             tempPos3 = 1.12 #Turn right to living room
             tempPos4 = 1 #Return to entrance
             pos = qBasic()
-            if Scene.Target.lower() == "cabinet ": #Kitchen cabinet
-                Type("You open the cabinet. There is nothing.")
-                Type("\n1)Return")
-                tempPos1 = 1.11 #Return to kitchen
-                tempPos2 = 1989 #Does nothing
-                tempPos3 = 1989 #Does nothing
-                tempPos4 = 1989 #Does nothing
-                pos = qBasic()
-        if pos == 1.112: #Kitchen drawer  DOES NOT WORK
-            Type("You pull open the drawer and peer inside.")
-            #Type("\n1)Take", colored('spoon', 'red'), "\n2)Take", colored('canned beans', 'red'), "\n3)Return")
-            temp = input("\n⇥   ")
-            
-
-    if True: #Living Room
-        if pos == 1.12: #Living Room
-            Type("The hard wood creaks below you as you enter the living room.")
-            Type("\n1)Look outside\n2)Go to kitchen\n3)Return to entrance")
-            tempPos1 = 1.121 #Look outside
-            tempPos2 = 1.11 #Go to kitchen
-            tempPos3 = 1.12 #Return to entrance
-            tempPos4 = 1989 #Does nothing
-            pos = qBasic()
-        if pos == 1.121: #Living Room Window
-            Type("You aproach the window and look outside. It is dark. You see the faint outlines of trees")
+        if pos == 1.111: #Kitchen cabinet
+            Type("You open the cabinet. There is nothing.")
             Type("\n1)Return")
-            tempPos1 = 1.12 #Look outside
+            tempPos1 = 1.11 #Return to kitchen
             tempPos2 = 1989 #Does nothing
             tempPos3 = 1989 #Does nothing
             tempPos4 = 1989 #Does nothing
             pos = qBasic()
-#
+        if pos == 1.112: #Kitchen drawer  DOES NOT WORK
+            Type("You pull open the drawer and peer inside.")
+            #Type("\n1)Take", colored('spoon', 'red'), "\n2)Take", colored('canned beans', 'red'), "\n3)Return")
+            temp = input("\n⇥   ")
+            tempItem1 = Items.Spoon #spoon
+            tempItem2 = Items.Beans #beans
+            tempItem3 = "null" #Does nothing
+            tempPos1 = 1989 #Does nothing
+            pos == qInteract()
+            
+
+    #f True: #Living Room
