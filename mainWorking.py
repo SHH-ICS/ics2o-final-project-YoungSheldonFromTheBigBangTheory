@@ -44,6 +44,8 @@ def qInteract():
                     Inventory.inventory.append(tempItem2) 
                 if item.Check(tempItem3) is False and tempItem3 != "null":
                     Inventory.inventory.append(tempItem3)
+                if item.Check(tempItem4) is False and tempItem4 != "null":
+                    Inventory.inventory.append(tempItem4)
 
 
 while True: #Start Game
@@ -97,6 +99,7 @@ while True: #Pos 0
             tempItem1 = Items.Spoon #spoon
             tempItem2 = Items.Beans #beans
             tempItem3 = "null" #Does nothing
+            tempItem4 = "null"
             tempPos1 = 1989 #Does nothing
             pos == qInteract()
             
