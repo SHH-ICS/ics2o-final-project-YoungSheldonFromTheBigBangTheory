@@ -11,6 +11,7 @@ class Item():
         return self.Name == _Item.Name and self.Description == _Item.Description
 
 class Items():
+    Null:Item = Item("Null", "Null")
     Spoon:Item = Item("Spoon", "Can hurt people")
     Beans:Item = Item("Beans", "Beans")
 

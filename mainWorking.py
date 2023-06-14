@@ -34,7 +34,7 @@ def qBasic(): #Basic Question(Movement)
             return pos
         print("Invalid")
 
-def qInteract():
+def Interact():
     while True:
         for item in Inventory.inventory:
                 item:Item
@@ -46,6 +46,34 @@ def qInteract():
                     Inventory.inventory.append(tempItem3)
                 if item.Check(tempItem4) is False and tempItem4 != "null":
                     Inventory.inventory.append(tempItem4)
+
+Inventory.inventory.append(Items.Spoon)
+
+def qInteract():
+    while True:
+        temp = input("\n⇥   ")
+        for item in Inventory.inventory:
+            item:Item
+            if item.Check(tempItem1) is True or tempItem1 == Items.Null:
+                if temp == "1" and tempPos1 != 1989:
+                    pos = tempPos1
+                    return pos
+
+            if item.Check(tempItem2) is True or item.Check(Items.Null) is True:
+                if temp == "2" and tempPos2 != 1989:
+                    pos = tempPos2
+                    return pos
+
+            if item.Check(tempItem3) is True or item.Check(Items.Null) is True:
+                if temp == "3" and tempPos3 != 1989:
+                    pos = tempPos3
+                    return pos
+            
+            if item.Check(tempItem4) is True or item.Check(Items.Null) is True:
+                #Inventory.inventory.append(tempItem4)
+                if temp == "4" and tempPos4 != 1989:
+                    pos = tempPos4
+                    return pos
 
 
 while True: #Start Game
@@ -66,7 +94,11 @@ while True: #Pos 0
         tempPos2 = 0.1 #Continue path left
         tempPos3 = 0.2 #Continue path right
         tempPos4 = 1989 #Does nothing
-        pos = qBasic()
+        tempItem1 = Items.Null #spoon
+        tempItem2 = Items.Null #beans
+        tempItem3 = Items.Null #Does nothing
+        tempItem4 = Items.Null
+        pos = qInteract()
     if pos == 1: #House Entrance
         Type("You find yourself in the entrance of the house")
         Type("\n1)Head upstairs\n2)Head straight towards kitchen\n3)Turn right to the living room\n4)Exit the house")
