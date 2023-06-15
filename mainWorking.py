@@ -52,12 +52,19 @@ Inventory.inventory.append(Items.Spoon)
 def Interact():
     while True:
         temp = input("\n⇥   ")
+
+        if temp == "give items":
+            Inventory.inventory.append(Items.Beans)
+
         for item in Inventory.inventory:
             item:Item
             if item.Check(tempItem1) is True or tempItem1 == Items.Null:
                 if temp == "1" and tempPos1 != "null":
                     pos = tempPos1
                     return pos
+            elif item.Check(tempItem1) is False and tempItem1 != Items.Null:
+                Type("\nYou don't have the ")
+                print(tempItem1)
 
             if item.Check(tempItem2) is True or tempItem2 == Items.Null:
                 if temp == "2" and tempPos2 != "null":
@@ -86,7 +93,7 @@ while True: #Start Game
     Type("Um what?")
 
 while True: #Pos 0
-    
+
     if pos == 0: #Spawn
         Type("You find yourself on a rocky path in front of a slightly weathered, red bricked house")
         Type("\n1)Walk inside\n2)Continue path left\n3)Continue path right")
@@ -94,7 +101,8 @@ while True: #Pos 0
         tempPos2 = 0.1 #Continue path left
         tempPos3 = 0.2 #Continue path right
         tempPos4 = "null" #Does nothing
-        tempItem1 = tempItem2 = tempItem3 = tempItem4 = Items.Null 
+        tempItem1 = Items.Beans
+        tempItem2 = tempItem3 = tempItem4 = Items.Null 
         pos = Interact()
     if pos == 1: #House Entrance
         Type("You find yourself in the entrance of the house")
@@ -133,7 +141,10 @@ while True: #Pos 0
             tempItem3 = "null" #Does nothing
             tempItem4 = "null"
             tempPos1 = "null" #Does nothing
-            pos == Interact()
+            tempPos2 = "null" #Does nothing
+            tempPos3 = "null" #Does nothing
+            tempPos4 = "null" #Does nothing
+            pos = Interact()
             
 
     if True: #Living Room
