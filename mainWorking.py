@@ -1,5 +1,5 @@
 #python3 -m pip install --upgrade termcolor
-import sys, random, json, time
+import sys, random, time
 from termcolor import colored, cprint
 from Inventory import *
 
@@ -16,20 +16,6 @@ def Type(t): #Word typing control
         sys.stdout.write(l)
         sys.stdout.flush()
         time.sleep(random.random()*10.0/wpm)
-
-def qInteract():
-    while True:
-        for item in Inventory.inventory:
-                item:Item
-                if item.Check(tempItem1) is False and tempItem1 != "null":
-                    Inventory.inventory.append(tempItem1) 
-                if item.Check(tempItem2) is False and tempItem2 != "null":
-                    Inventory.inventory.append(tempItem2) 
-                if item.Check(tempItem3) is False and tempItem3 != "null":
-                    Inventory.inventory.append(tempItem3)
-                if item.Check(tempItem4) is False and tempItem4 != "null":
-                    Inventory.inventory.append(tempItem4)
-
 
 def Interact(): #Balls
     while True:
@@ -71,9 +57,21 @@ def Interact(): #Balls
                     pos = tempPos4
                     return pos
                 
-        else: 
+        if temp == "1": 
             Type("\nYou don't have the ")
             print(tempItem1)
+
+        if temp == "2": 
+            Type("\nYou don't have the ")
+            print(tempItem2)
+            
+        if temp == "3": 
+            Type("\nYou don't have the ")
+            print(tempItem3)
+
+        if temp == "4": 
+            Type("\nYou don't have the ")
+            print(tempItem4)
 
 def Interaction():
     while True:
