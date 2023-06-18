@@ -6,6 +6,7 @@ from Inventory import *
 class Scene:
     Room:str = "kitchen"
     Target:str = None
+    Room:str = "spawn"
 
 
 pos = float(0)
