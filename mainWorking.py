@@ -35,7 +35,6 @@ def Interact(): #Balls
         for item in Inventory.inventory:
             item:Item
             #print(str(item))
-            
             for i in range(0, len(tempPos)): #Range of 0 to list
                 #print(tempPos[i])
                 if temp == str(i+1) and tempPos[i] != "null": #Compare if input is equal to list
@@ -91,22 +90,12 @@ while True: #Pos 0
     if pos == 0: #Spawn
         Type("You find yourself on a rocky path in front of a slightly weathered, red bricked house")
         Type("\n1)Walk inside\n2)Continue path left\n3)Continue path right")
-        tempPos1 = 1 #Walk inside
-        tempPos2 = 0.1 #Continue path left
-        tempPos3 = 0.2 #Continue path right
-        tempPos4 = "null" #Does nothing
         tempPos:list = [1, 0.1, 0.2, "null"]
         tempItem:list = [Items.HouseKey, Items.Null, Items.Null, Items.Null]
-        #tempItem1 = Items.HouseKey
-        #tempItem2 = tempItem3 = tempItem4 = Items.Null 
         pos = Interact()
     if pos == 1: #House Entrance
         Type("You find yourself in the entrance of the house")
         Type("\n1)Head upstairs\n2)Head straight towards kitchen\n3)Turn right to the living room\n4)Exit the house")
-        tempPos1 = 1.2 #Head upstairs
-        tempPos2 = 1.11 #Head towards kitchen
-        tempPos3 = 1.12 #Turn right to living room
-        tempPos4 = 0 #Exit house
         tempPos:list = [1.2, 1.11, 1.12, 0]
         tempItem:list = [Items.Null, Items.Null, Items.Null, Items.Null] 
         pos = Interact()
@@ -114,20 +103,14 @@ while True: #Pos 0
         if pos == 1.11: #Kitchen
             Type("You step onto the black & white checkered floor. Close beside you to your left is a line of smooth white cabinets. ")
             Type("\n1)Search cabinet\n2)Search drawer\n3)Turn right to the living room\n4)Return to entrance")
-            tempPos1 = 1.111 #Search cabinet
-            tempPos2 = 1.112 #Seach drawer
-            tempPos3 = 1.12 #Turn right to living room
-            tempPos4 = 1 #Return to entrance
-            tempItem1 = tempItem2 = tempItem3 = tempItem4 = Items.Null 
+            tempPos:list = [1.111, 1.112, 1.12, 1]
+            tempItem:list = [Items.Null, Items.Null, Items.Null, Items.Null] 
             pos = Interact()
         if pos == 1.111: #Kitchen cabinet
             Type("You open the cabinet. There is nothing.")
             Type("\n1)Return")
-            tempPos1 = 1.11 #Return to kitchen
-            tempPos2 = "null" #Does nothing
-            tempPos3 = "null" #Does nothing
-            tempPos4 = "null" #Does nothing
-            tempItem1 = tempItem2 = tempItem3 = tempItem4 = Items.Null 
+            tempPos:list = [1.11, "null", "null", "null"]
+            tempItem:list = [Items.Null, Items.Null, Items.Null, Items.Null] 
             pos = Interact()
         if pos == 1.112: #Kitchen drawer  DOES NOT WORK
             Type("You pull open the drawer and peer inside.")
@@ -148,18 +131,12 @@ while True: #Pos 0
         if pos == 1.12: #Living Room
             Type("The hard wood creaks below you as you enter the living room.")
             Type("\n1)Look outside\n2)Go to kitchen\n3)Return to entrance")
-            tempPos1 = 1.121 #Look outside
-            tempPos2 = 1.11 #Go to kitchen
-            tempPos3 = 1.12 #Return to entrance
-            tempPos4 = "null" #Does nothing
-            tempItem1 = tempItem2 = tempItem3 = tempItem4 = Items.Null 
+            tempPos:list = [1.121, 1.11, 1.12, "null"]
+            tempItem:list = [Items.Null, Items.Null, Items.Null, Items.Null] 
             pos = Interact()
         if pos == 1.121: #Living Room Window
             Type("You aproach the window and look outside. It is dark. You see the faint outlines of trees")
             Type("\n1)Return")
-            tempPos1 = 1.12 #Look outside
-            tempPos2 = "null" #Does nothing
-            tempPos3 = "null" #Does nothing
-            tempPos4 = "null" #Does nothing
-            tempItem1 = tempItem2 = tempItem3 = tempItem4 = Items.Null 
+            tempPos:list = [1.12, "null", "null", "null"]
+            tempItem:list = [Items.Null, Items.Null, Items.Null, Items.Null]
             pos = Interact()
