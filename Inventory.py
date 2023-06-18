@@ -19,9 +19,6 @@ class Items():
     Null:Item = Item("Null", "Null")
     Spoon:Item = Item("Spoon", "Can hurt people")
     Beans:Item = Item("Beans", "Beans")
-
-x = Items.Null
-for i in range (1, 8):
-    Inventory.inventory.append(Items.Null)
+    HouseKey:Item = Item("House Key", "Unlocks house")
 
 #Inventory.inventory[0].check(Items.Spoon)

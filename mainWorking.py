@@ -30,37 +30,37 @@ def qInteract():
                 if item.Check(tempItem4) is False and tempItem4 != "null":
                     Inventory.inventory.append(tempItem4)
 
-Inventory.inventory.append(Items.Spoon)
 
 def Interact(): #Balls
     while True:
         temp = input("\n⇥   ")
 
         if temp == "give items":
+            #Inventory.inventory.append(Items.HouseKey)
             Inventory.inventory.append(Items.Beans)
+            #Inventory.inventory.append(Items.Spoon)
+            print("given items")
 
-            #print(Inventory.inventory)
-            asd = Item.itmStr
-            print(asd)
+        if temp == "key":
+            Inventory.inventory.append(Items.HouseKey)
+
+        #print(*Inventory.inventory, sep = "\n")
 
         for item in Inventory.inventory:
             item:Item
             #print(str(item))
-            if item.Check(tempItem1) is True or tempItem1 == Items.Null: #Help me jesus
-                if temp == "1" and tempPos1 != "null":
+            
+            if temp == "1" and tempPos1 != "null":
+                if item.Check(tempItem1) is True or tempItem1 == Items.Null:
                     pos = tempPos1
                     return pos
-            
-            if (item.Check(tempItem1) is False and item != Items.Null): 
-                Type("\nYou don't have the ")
-                print(tempItem1)
 
-            if item.Check(tempItem2) is True or tempItem2 == Items.Null: #Smash my balls against the wall
+            if item.Check(tempItem2) is True or tempItem2 == Items.Null: 
                 if temp == "2" and tempPos2 != "null":
                     pos = tempPos2
                     return pos
 
-            if item.Check(tempItem3) is True or tempItem3 == Items.Null: # Hour 30, no hope
+            if item.Check(tempItem3) is True or tempItem3 == Items.Null: 
                 if temp == "3" and tempPos3 != "null":
                     pos = tempPos3
                     return pos
@@ -70,6 +70,10 @@ def Interact(): #Balls
                 if temp == "4" and tempPos4 != "null":
                     pos = tempPos4
                     return pos
+                
+        else: 
+            Type("\nYou don't have the ")
+            print(tempItem1)
 
 def Interaction():
     while True:
@@ -107,7 +111,7 @@ while True: #Pos 0
         tempPos3 = 0.2 #Continue path right
         tempPos4 = "null" #Does nothing
         tempPos:list = [1, 0.1, 0.2, "null"]
-        tempItem1 = Items.Beans
+        tempItem1 = Items.HouseKey
         tempItem2 = tempItem3 = tempItem4 = Items.Null 
         pos = Interact()
     if pos == 1: #House Entrance
