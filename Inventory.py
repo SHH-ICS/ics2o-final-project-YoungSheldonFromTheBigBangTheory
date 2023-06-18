@@ -1,3 +1,5 @@
+
+
 class Inventory():
     inventory:list = []
     slots:int = 8
@@ -9,10 +11,17 @@ class Item():
         self.Amount:int = Amount
     def Check(self, _Item) -> bool:
         return self.Name == _Item.Name and self.Description == _Item.Description
+    
+    def itmStr(self, _Item) -> any:
+        return self.Name == _Item.Name
 
 class Items():
     Null:Item = Item("Null", "Null")
     Spoon:Item = Item("Spoon", "Can hurt people")
     Beans:Item = Item("Beans", "Beans")
+
+x = Items.Null
+for i in range (1, 8):
+    Inventory.inventory.append(Items.Null)
 
 #Inventory.inventory[0].check(Items.Spoon)

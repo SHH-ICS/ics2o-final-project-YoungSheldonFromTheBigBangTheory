@@ -10,29 +10,12 @@ class Scene:
 
 pos = float(0)
 
-wpm = 85 #wpm
+wpm = 600 #wpm 85
 def Type(t): #Word typing control
     for l in t:
         sys.stdout.write(l)
         sys.stdout.flush()
         time.sleep(random.random()*10.0/wpm)
-
-def qBasic(): #Basic Question(Movement)
-    while True:
-        temp = input("\n⇥   ")
-        if temp == "1" and tempPos1 != 1989:
-            pos = tempPos1
-            return pos
-        if temp == "2" and tempPos2 != 1989:
-            pos = tempPos2
-            return pos
-        if temp == "3" and tempPos3 != 1989:
-            pos = tempPos3
-            return pos
-        if temp == "4" and tempPos4 != 1989:
-            pos = tempPos4
-            return pos
-        print("Invalid")
 
 def qInteract():
     while True:
@@ -49,7 +32,46 @@ def qInteract():
 
 Inventory.inventory.append(Items.Spoon)
 
-def Interact():
+def Interact(): #Balls
+    while True:
+        temp = input("\n⇥   ")
+
+        if temp == "give items":
+            Inventory.inventory.append(Items.Beans)
+
+            #print(Inventory.inventory)
+            asd = Item.itmStr
+            print(asd)
+
+        for item in Inventory.inventory:
+            item:Item
+            #print(str(item))
+            if item.Check(tempItem1) is True or tempItem1 == Items.Null: #Help me jesus
+                if temp == "1" and tempPos1 != "null":
+                    pos = tempPos1
+                    return pos
+            
+            if (item.Check(tempItem1) is False and item != Items.Null): 
+                Type("\nYou don't have the ")
+                print(tempItem1)
+
+            if item.Check(tempItem2) is True or tempItem2 == Items.Null: #Smash my balls against the wall
+                if temp == "2" and tempPos2 != "null":
+                    pos = tempPos2
+                    return pos
+
+            if item.Check(tempItem3) is True or tempItem3 == Items.Null: # Hour 30, no hope
+                if temp == "3" and tempPos3 != "null":
+                    pos = tempPos3
+                    return pos
+            
+            if item.Check(tempItem4) is True or tempItem4 == Items.Null: 
+                #Inventory.inventory.append(tempItem4)
+                if temp == "4" and tempPos4 != "null":
+                    pos = tempPos4
+                    return pos
+
+def Interaction():
     while True:
         temp = input("\n⇥   ")
 
@@ -58,30 +80,13 @@ def Interact():
 
         for item in Inventory.inventory:
             item:Item
-            if item.Check(tempItem1) is True or tempItem1 == Items.Null:
-                if temp == "1" and tempPos1 != "null":
-                    pos = tempPos1
-                    return pos
-            elif item.Check(tempItem1) is False and tempItem1 != Items.Null:
-                Type("\nYou don't have the ")
-                print(tempItem1)
 
-            if item.Check(tempItem2) is True or tempItem2 == Items.Null:
-                if temp == "2" and tempPos2 != "null":
-                    pos = tempPos2
-                    return pos
+            for i in range(len(tempPos)):
 
-            if item.Check(tempItem3) is True or tempItem3 == Items.Null:
-                if temp == "3" and tempPos3 != "null":
-                    pos = tempPos3
-                    return pos
-            
-            if item.Check(tempItem4) is True or tempItem4 == Items.Null:
-                #Inventory.inventory.append(tempItem4)
-                if temp == "4" and tempPos4 != "null":
-                    pos = tempPos4
-                    return pos
-
+                if item.Check(tempItem1) is True or tempItem1 == Items.Null:
+                    if temp == i and tempPos1 != "null":
+                        pos = tempPos1
+                        print("i")
 
 while True: #Start Game
     temp = input("start game? y/n: ").lower()
@@ -101,6 +106,7 @@ while True: #Pos 0
         tempPos2 = 0.1 #Continue path left
         tempPos3 = 0.2 #Continue path right
         tempPos4 = "null" #Does nothing
+        tempPos:list = [1, 0.1, 0.2, "null"]
         tempItem1 = Items.Beans
         tempItem2 = tempItem3 = tempItem4 = Items.Null 
         pos = Interact()
