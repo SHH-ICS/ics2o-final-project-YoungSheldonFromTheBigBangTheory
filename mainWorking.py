@@ -36,42 +36,29 @@ def Interact(): #Balls
             item:Item
             #print(str(item))
             
-            if temp == "1" and tempPos1 != "null":
-                if item.Check(tempItem1) is True or tempItem1 == Items.Null:
-                    pos = tempPos1
-                    return pos
-
-            if item.Check(tempItem2) is True or tempItem2 == Items.Null: 
-                if temp == "2" and tempPos2 != "null":
-                    pos = tempPos2
-                    return pos
-
-            if item.Check(tempItem3) is True or tempItem3 == Items.Null: 
-                if temp == "3" and tempPos3 != "null":
-                    pos = tempPos3
-                    return pos
-            
-            if item.Check(tempItem4) is True or tempItem4 == Items.Null: 
-                #Inventory.inventory.append(tempItem4)
-                if temp == "4" and tempPos4 != "null":
-                    pos = tempPos4
-                    return pos
+            for i in range(0, len(tempPos)): #Range of 0 to list
+                #print(tempPos[i])
+                if temp == str(i+1) and tempPos[i] != "null": #Compare if input is equal to list
+                    #print(tempItem[i])
+                    if item.Check(tempItem[i]) is True or tempItem[i] == Items.Null:
+                        pos = tempPos[i]
+                        return pos
                 
         if temp == "1": 
             Type("\nYou don't have the ")
-            print(tempItem1)
+            print(tempItem)
 
         if temp == "2": 
             Type("\nYou don't have the ")
-            print(tempItem2)
+            print(tempItem)
             
         if temp == "3": 
             Type("\nYou don't have the ")
-            print(tempItem3)
+            print(tempItem)
 
         if temp == "4": 
             Type("\nYou don't have the ")
-            print(tempItem4)
+            print(tempItem)
 
 def Interaction():
     while True:
@@ -109,8 +96,9 @@ while True: #Pos 0
         tempPos3 = 0.2 #Continue path right
         tempPos4 = "null" #Does nothing
         tempPos:list = [1, 0.1, 0.2, "null"]
-        tempItem1 = Items.HouseKey
-        tempItem2 = tempItem3 = tempItem4 = Items.Null 
+        tempItem:list = [Items.HouseKey, Items.Null, Items.Null, Items.Null]
+        #tempItem1 = Items.HouseKey
+        #tempItem2 = tempItem3 = tempItem4 = Items.Null 
         pos = Interact()
     if pos == 1: #House Entrance
         Type("You find yourself in the entrance of the house")
@@ -119,7 +107,8 @@ while True: #Pos 0
         tempPos2 = 1.11 #Head towards kitchen
         tempPos3 = 1.12 #Turn right to living room
         tempPos4 = 0 #Exit house
-        tempItem1 = tempItem2 = tempItem3 = tempItem4 = Items.Null 
+        tempPos:list = [1.2, 1.11, 1.12, 0]
+        tempItem:list = [Items.Null, Items.Null, Items.Null, Items.Null] 
         pos = Interact()
     if True: #Kitchen
         if pos == 1.11: #Kitchen

@@ -11,9 +11,6 @@ class Item():
         self.Amount:int = Amount
     def Check(self, _Item) -> bool:
         return self.Name == _Item.Name and self.Description == _Item.Description
-    
-    def itmStr(self, _Item) -> any:
-        return self.Name == _Item.Name
 
 class Items():
     Null:Item = Item("Null", "Null")
