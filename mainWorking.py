@@ -81,25 +81,24 @@ def Interact(): #Balls
                         print("i")
 
 def pickUp():
+    opt:list = []
     for i in range(0, len(tempOpt)):
         prb:list = []
         for item in Inventory.inventory:
             item:Item
             if item.Check(tempItem[i]) is True:
                 prb.append(True)
-        #print(prb)
         if not any(prb):
-            print((i + 1), ")", tempOpt[i])
+            opt.append(tempOpt[i])
+    for num, letter in enumerate(opt):
+        print(num + 1, letter)
 
     temp = input("⇥   ")
 
     for i in range(0, len(tempItem)):
-        if temp == str(i+1): #and tempItem != Items.Null:
+        if temp == str(i+1) and tempItem[i] != Items.Null:
             Inventory.inventory.append(tempItem[i])
             print(Inventory.inventory)
-
-
-    
 
 while True: #Start Game
     temp = input("start game? y/n: ").lower()
@@ -140,11 +139,12 @@ while True: #Pos 0
                 tempPos = [1.11, "null", "null", "null"]
                 reqdItem = [Items.Null, Items.Null, Items.Null, Items.Null] 
                 pos = Interact()
-            if pos == 1.112: #Kitchen drawer  DOES NOT WORK
+            if pos == 1.112: #Kitchen drawer 
                 Type("You pull open the drawer and peer inside. \n")
                 tempOpt = ["Take spoon", "Take canned beans", "Return"]
                 tempItem = [Items.Spoon, Items.Beans, Items.Null, Items.Null]
                 tempPos = ["null", "null", "null", "null"]
+                reqdItem = [Items.Null, Items.Null, Items.Null, Items.Null] 
                 pickUp()
                 
 
