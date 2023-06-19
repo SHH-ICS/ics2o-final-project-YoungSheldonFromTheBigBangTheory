@@ -82,16 +82,21 @@ def Interact(): #Balls
 
 def pickUp():
     for i in range(0, len(tempOpt)):
+        prb:list = []
         for item in Inventory.inventory:
             item:Item
-            if item.Check(tempItem[i]) is False:
-                print((i + 1), ")", tempOpt[i])
+            if item.Check(tempItem[i]) is True:
+                prb.append(True)
+        #print(prb)
+        if not any(prb):
+            print((i + 1), ")", tempOpt[i])
 
     temp = input("⇥   ")
 
     for i in range(0, len(tempItem)):
         if temp == str(i+1): #and tempItem != Items.Null:
             Inventory.inventory.append(tempItem[i])
+            print(Inventory.inventory)
 
 
     
