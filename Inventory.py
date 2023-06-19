@@ -1,8 +1,6 @@
 
 
-class Inventory():
-    inventory:list = []
-    slots:int = 8
+
 
 class Item():
     def __init__(self, Name:str, Description:str, Amount:int=1) -> None:
@@ -18,4 +16,14 @@ class Items():
     Beans:Item = Item("Beans", "Beans")
     HouseKey:Item = Item("House Key", "Unlocks house")
 
+class Inventory():
+    inventory:list = []
+    slots:int = 8
+    @staticmethod
+    def hasItem(item:Item) -> bool:
+        for itm in Inventory.inventory:
+            itm:Item
+            if itm.Check(item):
+                return True
+        return False
 #Inventory.inventory[0].check(Items.Spoon)

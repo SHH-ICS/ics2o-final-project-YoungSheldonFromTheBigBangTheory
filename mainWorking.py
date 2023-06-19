@@ -90,13 +90,14 @@ def pickUp():
                 prb.append(True)
         if not any(prb):
             opt.append(tempOpt[i])
+    #print(len(opt))
     for num, letter in enumerate(opt):
-        print(num + 1, letter)
+        print(num + 1, ")", letter)
 
     temp = input("⇥   ")
 
-    for i in range(0, len(tempItem)):
-        if temp == str(i+1) and tempItem[i] != Items.Null:
+    for i in range(0, len(opt)):
+        if temp == str(i+(len(tempOpt))-(len(opt))) and tempItem[i+(len(tempOpt))-(len(opt))] != Items.Null:
             Inventory.inventory.append(tempItem[i])
             print(Inventory.inventory)
 
@@ -134,7 +135,7 @@ while True: #Pos 0
                 reqdItem = [Items.Null, Items.Null, Items.Null, Items.Null] 
                 pos = Interact()
             if pos == 1.111: #Kitchen cabinet
-                Type("You open the cabinet. There is nothing.")
+                Type("You open the cabinet. There is nothing.\n")
                 tempOpt = ["Return"]
                 tempPos = [1.11, "null", "null", "null"]
                 reqdItem = [Items.Null, Items.Null, Items.Null, Items.Null] 
