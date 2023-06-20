@@ -71,6 +71,7 @@ def Interact(): #Balls
 
 def pickUp():
     opt:list = []
+    itm:list = []
     for i in range(0, len(tempOpt)):
         if tempOpt[i] != "null":
             prb:list = []
@@ -80,6 +81,7 @@ def pickUp():
                     prb.append(True)
             if not any(prb):
                 opt.append(tempOpt[i])
+                itm.append(tempItem[i])
     #print(len(opt))
     for num, letter in enumerate(opt):
         print(num + 1, ")", letter)
@@ -94,17 +96,10 @@ def pickUp():
 
         print(len(opt))
 
-        if len(opt) > int(temp):
-            print("second")
-            if temp == str(i+1) and tempItem[i] != Items.Null:
-                Inventory.inventory.append(tempItem[i])
-                print(Inventory.inventory)
+        if temp == str(i+1) and tempItem[i] != Items.Null:
+            Inventory.inventory.append(itm[i])
+            print(Inventory.inventory)
 
-        elif int(temp) > len(opt):
-            print("first")
-            if temp == str(i+(len(tempOpt))-(len(opt))) and tempItem[i+(len(tempOpt))-(len(opt))] != Items.Null:
-                Inventory.inventory.append(tempItem[i+(len(tempOpt))-(len(opt))])
-                print(Inventory.inventory)
 
         
 while True: #Start Game
