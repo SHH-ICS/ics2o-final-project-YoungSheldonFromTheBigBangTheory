@@ -11,12 +11,23 @@ reqdItem:list = []
 tempItem:list = []
 Inventory.inventory.append(Items.Dime)
 
-wpm = 600 #wpm 85
+wpmR = 125 #Regular print speed
+wpmF = 600 #Fast print speed
+wpm = wpmR #wpm
+
 def Type(t): #Word typing control
     for l in t:
         sys.stdout.write(l)
         sys.stdout.flush()
         time.sleep(random.random()*10.0/wpm)
+
+def viewInventory():
+    print("--------------------------------------\n")
+    for item in Inventory.inventory:
+        item:Item
+        Type(item.Name)
+        print("")
+    print("\n--------------------------------------\n")
 
 def Interact(): #Balls
 
@@ -28,15 +39,17 @@ def Interact(): #Balls
 
     while True:
 
-        temp = input("⇥   ")
+        temp = input("⇥   ").lower()
 
         if temp == "give items":
-            Inventory.inventory.append(Items.HouseKey, Items.NightStandKey, Items.BobbyPin, Items.FlashLight)
-
+            Inventory.inventory.append(Items.HouseKey)
+            Inventory.inventory.append(Items.NightStandKey)
+            Inventory.inventory.append(Items.BobbyPin)
+            Inventory.inventory.append(Items.FlashLight)
             print("given items")
 
-        if temp == "key":
-            Inventory.inventory.append(Items.HouseKey)
+        if temp == "i" or temp == "inventory":
+            viewInventory()
 
         for item in Inventory.inventory:
             item:Item
@@ -46,8 +59,8 @@ def Interact(): #Balls
                         pos = tempPos[i]
                         return pos
                 
-        else: 
-            Type("\nYou lack the required item... \n")
+        if temp != "i" and temp != "inventory": 
+            Type("\nYou lack the required item... \n\n")
 
 def pickUp():
     global pos
@@ -71,10 +84,19 @@ def pickUp():
 
     temp = input("⇥   ")
 
+    if temp == "i" or temp == "inventory":
+            
+        viewInventory()
 
     for i in range(0, len(opt)):
         if temp == str(i+1) and tempItem[i] != Items.Null:
             Inventory.inventory.append(itm[i])
+            if itm[i] is not Items.Return:
+                print("--------------------------------------\n")
+                Type("You obtained a ")
+                print(itm[i].Name)
+                print("\n--------------------------------------\n")
+
 
     for item in Inventory.inventory:
         item:Item
@@ -84,6 +106,7 @@ def pickUp():
 
         
 while True: #Start Game
+    Type("Options are selected using numbers 1-4\nTo view inventory type inventory or i\n")
     temp = input("start game? y/n: ").lower()
 
     if temp == "yes" or temp == "y":
