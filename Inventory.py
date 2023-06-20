@@ -11,10 +11,14 @@ class Item():
         return self.Name == _Item.Name and self.Description == _Item.Description
 
 class Items():
+    Return:Item = Item("Return", "Return")
     Null:Item = Item("Null", "Null")
     Spoon:Item = Item("Spoon", "Can hurt people")
     Beans:Item = Item("Beans", "Beans")
     HouseKey:Item = Item("House Key", "Unlocks house")
+    FlashLight:Item = Item("Flash Light", "Illuminates an area")
+    Dime:Item = Item("Dime", "A coin")
+    GoldCoin:Item = Item("Gold Coin", "A stamped coin made of gold")
 
 class Inventory():
     inventory:list = []

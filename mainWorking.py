@@ -3,11 +3,13 @@ import sys, random, time
 from termcolor import colored, cprint
 from Inventory import *
 
+
 pos = float(0)
 tempOpt:list = []
 tempPos:list = []
 reqdItem:list = []
 tempItem:list = []
+Inventory.inventory.append(Items.Dime)
 
 wpm = 600 #wpm 85
 def Type(t): #Word typing control
@@ -19,7 +21,10 @@ def Type(t): #Word typing control
 def Interact(): #Balls
 
     for i in range(0, len(tempOpt)):
-        print((i + 1), ")", tempOpt[i])
+        Type(str(i + 1))
+        Type(")")
+        Type(str(tempOpt[i]))
+        print("")
 
     while True:
 
@@ -34,42 +39,19 @@ def Interact(): #Balls
         if temp == "key":
             Inventory.inventory.append(Items.HouseKey)
 
-        #print(*Inventory.inventory, sep = "\n")
-
         for item in Inventory.inventory:
             item:Item
-            #print(str(item))
             for i in range(0, len(tempPos)): #Range of 0 to list
-                #print(tempPos[i])
                 if temp == str(i+1) and tempPos[i] != "null": #Compare if input is equal to list
-                    #print(reqdItem[i])
                     if item.Check(reqdItem[i]) is True or reqdItem[i] == Items.Null:
                         pos = tempPos[i]
                         return pos
                 
         else: 
             Type("\nYou lack the required item... \n")
-            #print(reqdItem)
-
-
-
-    while True:
-        temp = input("\n⇥   ")
-
-        if temp == "give items":
-            Inventory.inventory.append(Items.Beans)
-
-        for item in Inventory.inventory:
-            item:Item
-
-            for i in range(len(tempPos)):
-
-                if item.Check(tempItem1) is True or tempItem1 == Items.Null:
-                    if temp == i and tempPos1 != "null":
-                        pos = tempPos1
-                        print("i")
 
 def pickUp():
+    global pos
     opt:list = []
     itm:list = []
     for i in range(0, len(tempOpt)):
@@ -82,24 +64,24 @@ def pickUp():
             if not any(prb):
                 opt.append(tempOpt[i])
                 itm.append(tempItem[i])
-    #print(len(opt))
     for num, letter in enumerate(opt):
-        print(num + 1, ")", letter)
+        Type(str(num + 1))
+        Type(")")
+        Type(letter)
+        print("")
 
     temp = input("⇥   ")
 
 
     for i in range(0, len(opt)):
-        time.sleep(1)
-        #print(i+1+(len(opt))-(len(tempOpt)))
-        #print(i-1+(len(tempOpt))-(len(opt)))
-
-        print(len(opt))
-
         if temp == str(i+1) and tempItem[i] != Items.Null:
             Inventory.inventory.append(itm[i])
-            print(Inventory.inventory)
 
+    for item in Inventory.inventory:
+        item:Item
+        if item.Check(Items.Return) is True:
+            Inventory.inventory.remove(Items.Return)
+            pos = tempPos[0]
 
         
 while True: #Start Game
@@ -116,7 +98,7 @@ while True: #Pos 0
     if pos == 0: #Spawn
         Type("You find yourself on a rocky path in front of a slightly weathered, red bricked house\n")
         tempOpt = ["Walk inside", "Continue path left", "Continue path right"]
-        tempPos = [1, 0.1, 0.2, "null"]
+        tempPos = [1, 2, 3, "null"]
         reqdItem = [Items.HouseKey, Items.Null, Items.Null, Items.Null]
         pos = Interact()
 
@@ -144,11 +126,18 @@ while True: #Pos 0
             if pos == 1.112: #Kitchen drawer 
                 Type("You pull open the drawer and peer inside. \n")
                 tempOpt = ["Take spoon", "Take canned beans", "Return", "null"]
-                tempItem = [Items.Spoon, Items.Beans, Items.Null, Items.Null]
-                tempPos = ["null", "null", "null", "null"]
+                tempItem = [Items.Spoon, Items.Beans, Items.Return, Items.Null]
+                tempPos = [1.11, "null", "null", "null"]
                 reqdItem = [Items.Null, Items.Null, Items.Null, Items.Null] 
                 pickUp()
-                
+
+        if True: #upstairs
+            if pos == 1.2:
+                Type("You find yourself in the entrance of the house\n")
+                tempOpt = ["Continue down the hall", "Turn into bathroom", "Turn right to the living room", "Exit the house"]
+                tempPos = [1.2, 1.11, 1.12, 0]
+                reqdItem = [Items.Null, Items.Null, Items.Null, Items.Null] 
+                pos = Interact()
 
         if True: #Living Room
             if pos == 1.12: #Living Room
@@ -163,3 +152,27 @@ while True: #Pos 0
                 tempPos = [1.12, "null", "null", "null"]
                 reqdItem = [Items.Null, Items.Null, Items.Null, Items.Null]
                 pos = Interact()
+
+    if True: #Path left
+        if pos == 2:
+            Type("You stand before a guiled chest\n")
+            tempOpt = ["Search", "Return"]
+            tempPos = [2.1, 0, "null", "null"]
+            reqdItem = [Items.Null, Items.Null, Items.Null, Items.Null]
+            pos = Interact()
+
+        if pos == 2.1:
+            Type("You peer into the chest\n")
+            tempOpt = ["Take key", "Take gold coin", "Return", "null"]
+            tempItem = [Items.HouseKey, Items.GoldCoin, Items.Return, Items.Null]
+            tempPos = [2, "null", "null", "null"]
+            reqdItem = [Items.Null, Items.Null, Items.Null, Items.Null] 
+            pickUp()
+
+    if True: #Path right
+        if pos == 3:
+            Type("You look into the dense, dark tree line\n")
+            tempOpt = ["Continue", "Return"]
+            tempPos = [3.1, 0, "null", "null"]
+            reqdItem = [Items.FlashLight, Items.Null, Items.Null, Items.Null]
+            pos = Interact()
