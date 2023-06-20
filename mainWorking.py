@@ -237,7 +237,7 @@ while True: #Pos 0
             if pos == 1.12: #Living Room
                 Type("The hard wood creaks below you as you enter the living room. \n")
                 tempOpt = ["Look outside", "Go to kitchen", "Return to entrance"]
-                tempPos = [1.121, 1.11, 1.12, "null"]
+                tempPos = [1.121, 1.11, 1, "null"]
                 reqdItem = [Items.Null, Items.Null, Items.Null, Items.Null] 
                 pos = Interact()
             if pos == 1.121: #Living Room Window
