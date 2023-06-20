@@ -3,7 +3,7 @@ import sys, random, time
 from termcolor import colored, cprint
 from Inventory import *
 
-
+uba = False
 pos = float(0)
 tempOpt:list = []
 tempPos:list = []
@@ -31,9 +31,8 @@ def Interact(): #Balls
         temp = input("⇥   ")
 
         if temp == "give items":
-            #Inventory.inventory.append(Items.HouseKey)
-            Inventory.inventory.append(Items.Beans)
-            #Inventory.inventory.append(Items.Spoon)
+            Inventory.inventory.append(Items.HouseKey, Items.NightStandKey, Items.BobbyPin, Items.FlashLight)
+
             print("given items")
 
         if temp == "key":
@@ -125,8 +124,8 @@ while True: #Pos 0
                 pos = Interact()
             if pos == 1.112: #Kitchen drawer 
                 Type("You pull open the drawer and peer inside. \n")
-                tempOpt = ["Take spoon", "Take canned beans", "Return", "null"]
-                tempItem = [Items.Spoon, Items.Beans, Items.Return, Items.Null]
+                tempOpt = ["Take spoon", "Take canned beans", "Take small key", "Return"]
+                tempItem = [Items.Spoon, Items.Beans, Items.NightStandKey, Items.Return]
                 tempPos = [1.11, "null", "null", "null"]
                 reqdItem = [Items.Null, Items.Null, Items.Null, Items.Null] 
                 pickUp()
@@ -168,13 +167,48 @@ while True: #Pos 0
                     reqdItem = [Items.Null, Items.Null, Items.Null, Items.Null] 
                     pickUp()
 
-        if pos == 1.22:
-            Type("You pull open the top drawer and peer inside. \n")
-            tempOpt = ["Take tooth brush", "Return", "null", "null"]
-            tempItem = [Items.ToothBrush, Items.Return, Items.Null, Items.Null]
-            tempPos = [1.21, "null", "null", "null"]
-            reqdItem = [Items.Null, Items.Null, Items.Null, Items.Null] 
-            pickUp()
+
+        if True: #Upstairs bedroom(entrance)
+            if pos == 1.22 and uba == False:#Bedroom entrance(closed)
+                Type("You stand before a large door. \n")
+                tempOpt = ["Pick lock", "Return to stairs"]
+                tempPos = [1.221, 1.2, "null", "null"]
+                reqdItem = [Items.BobbyPin, Items.Null, Items.Null, Items.Null] 
+                pos = Interact()
+            if pos == 1.22 and uba == True: #Bedroom entrance(open)
+                Type("You stand before a large open door. \n")
+                tempOpt = ["Enter", "Return to stairs"]
+                tempPos = [1.221, 1.2, "null", "null"]
+                reqdItem = [Items.Null, Items.Null, Items.Null, Items.Null] 
+                pos = Interact()
+
+            if pos == 1.221: #inside bedroom
+                uba = True
+                Type("You are in a large, hardwood floored room with a tall ceiling  \n")
+                tempOpt = ["Look out window", "Search dresser", "Search night stand", "Return outside bedroom"]
+                tempPos = [1.2211, 1.2212, 1.2213, 1.22]
+                reqdItem = [Items.Null, Items.Null, Items.NightStandKey, Items.Null] 
+                pos = Interact()
+            if True:
+                if pos == 1.2211:
+                    Type("You look outside the window. It is dark but you make out the faint outlines of trees. \n")
+                    tempOpt = ["Return"]
+                    tempPos = [1.221, "null", "null", "null"]
+                    reqdItem = [Items.Null, Items.Null, Items.Null, Items.Null] 
+                    pos = Interact()
+                if pos == 1.2212:
+                    Type("You open the dresser and look inside. You see cloths old clothes but nothing of value. \n")
+                    tempOpt = ["Return"]
+                    tempPos = [1.221, "null", "null", "null"]
+                    reqdItem = [Items.Null, Items.Null, Items.Null, Items.Null] 
+                    pos = Interact()
+                if pos == 1.2213:
+                    Type("You open the drawer of the night stand. \n")
+                    tempOpt = ["Take Flashlight","Return","null","null"]
+                    tempItem = [Items.FlashLight, Items.Return, Items.Null, Items.Null]
+                    tempPos = [1.221, "null", "null", "null"]
+                    reqdItem = [Items.Null, Items.Null, Items.Null, Items.Null] 
+                    pickUp()
 
         if True: #Living Room
             if pos == 1.12: #Living Room
@@ -213,3 +247,6 @@ while True: #Pos 0
             tempPos = [3.1, 0, "null", "null"]
             reqdItem = [Items.FlashLight, Items.Null, Items.Null, Items.Null]
             pos = Interact()
+        if pos == 3.1:
+            Type("Thank you for playing the game")
+            sys.exit()

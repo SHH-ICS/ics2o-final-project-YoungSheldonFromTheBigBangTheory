@@ -22,6 +22,7 @@ class Items():
     BobbyPin:Item = Item("Bobby pin", "Can be used to pick locks")
     ToothBrush:Item = Item("Tooth Brush", "Used")
     QTip:Item = Item("Q-tip", "Just a a-tip")
+    NightStandKey:Item = Item("Night Stand Key", "Opens a night stand")
 
 
 class Inventory():
