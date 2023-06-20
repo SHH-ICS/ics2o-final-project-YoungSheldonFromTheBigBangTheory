@@ -47,21 +47,10 @@ def Interact(): #Balls
                         pos = tempPos[i]
                         return pos
                 
-        if temp == "1": 
-            Type("\nYou don't have the ")
-            print(reqdItem)
+        else: 
+            Type("\nYou lack the required item... \n")
+            #print(reqdItem)
 
-        if temp == "2": 
-            Type("\nYou don't have the ")
-            print(reqdItem)
-            
-        if temp == "3": 
-            Type("\nYou don't have the ")
-            print(reqdItem)
-
-        if temp == "4": 
-            Type("\nYou don't have the ")
-            print(reqdItem)
 
 
     while True:
@@ -83,24 +72,41 @@ def Interact(): #Balls
 def pickUp():
     opt:list = []
     for i in range(0, len(tempOpt)):
-        prb:list = []
-        for item in Inventory.inventory:
-            item:Item
-            if item.Check(tempItem[i]) is True:
-                prb.append(True)
-        if not any(prb):
-            opt.append(tempOpt[i])
+        if tempOpt[i] != "null":
+            prb:list = []
+            for item in Inventory.inventory:
+                item:Item
+                if item.Check(tempItem[i]) is True:
+                    prb.append(True)
+            if not any(prb):
+                opt.append(tempOpt[i])
     #print(len(opt))
     for num, letter in enumerate(opt):
         print(num + 1, ")", letter)
 
     temp = input("⇥   ")
 
-    for i in range(0, len(opt)):
-        if temp == str(i+(len(tempOpt))-(len(opt))) and tempItem[i+(len(tempOpt))-(len(opt))] != Items.Null:
-            Inventory.inventory.append(tempItem[i])
-            print(Inventory.inventory)
 
+    for i in range(0, len(opt)):
+        time.sleep(1)
+        #print(i+1+(len(opt))-(len(tempOpt)))
+        #print(i-1+(len(tempOpt))-(len(opt)))
+
+        print(len(opt))
+
+        if len(opt) > int(temp):
+            print("second")
+            if temp == str(i+1) and tempItem[i] != Items.Null:
+                Inventory.inventory.append(tempItem[i])
+                print(Inventory.inventory)
+
+        elif int(temp) > len(opt):
+            print("first")
+            if temp == str(i+(len(tempOpt))-(len(opt))) and tempItem[i+(len(tempOpt))-(len(opt))] != Items.Null:
+                Inventory.inventory.append(tempItem[i+(len(tempOpt))-(len(opt))])
+                print(Inventory.inventory)
+
+        
 while True: #Start Game
     temp = input("start game? y/n: ").lower()
 
@@ -142,7 +148,7 @@ while True: #Pos 0
                 pos = Interact()
             if pos == 1.112: #Kitchen drawer 
                 Type("You pull open the drawer and peer inside. \n")
-                tempOpt = ["Take spoon", "Take canned beans", "Return"]
+                tempOpt = ["Take spoon", "Take canned beans", "Return", "null"]
                 tempItem = [Items.Spoon, Items.Beans, Items.Null, Items.Null]
                 tempPos = ["null", "null", "null", "null"]
                 reqdItem = [Items.Null, Items.Null, Items.Null, Items.Null] 
