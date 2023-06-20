@@ -133,11 +133,28 @@ while True: #Pos 0
 
         if True: #upstairs
             if pos == 1.2:
-                Type("You find yourself in the entrance of the house\n")
-                tempOpt = ["Continue down the hall", "Turn into bathroom", "Turn right to the living room", "Exit the house"]
-                tempPos = [1.2, 1.11, 1.12, 0]
+                Type("You stand a top the stairs\n")
+                tempOpt = ["Continue down the hall", "Turn into bathroom", "Go down stairs"]
+                tempPos = [1.22, 1.21, 1, "null"]
                 reqdItem = [Items.Null, Items.Null, Items.Null, Items.Null] 
                 pos = Interact()
+
+        if True: #upstairs
+            if pos == 1.21:
+                Type("You see a counter with three drawers\n")
+                tempOpt = ["Search top drawer", "Search middle drawer", "Search bottom drawer", "Return to hall"]
+                tempPos = [1.211, 1.212, 1.213, 1.2]
+                reqdItem = [Items.Null, Items.Null, Items.Null, Items.Null] 
+                pos = Interact()
+            if True: #Upstairs bathroom
+                if pos == 1.211:
+                    Type("You pull open the top drawer and peer inside. \n")
+                    tempOpt = ["Take tooth brush", "Return", "null", "null"]
+                    tempItem = [Items.ToothBrush, Items.Return, Items.Null, Items.Null]
+                    tempPos = [1.21, "null", "null", "null"]
+                    reqdItem = [Items.Null, Items.Null, Items.Null, Items.Null] 
+                    pickUp()
+
 
         if True: #Living Room
             if pos == 1.12: #Living Room

@@ -19,10 +19,13 @@ class Items():
     FlashLight:Item = Item("Flash Light", "Illuminates an area")
     Dime:Item = Item("Dime", "A coin")
     GoldCoin:Item = Item("Gold Coin", "A stamped coin made of gold")
+    BobbyPin:Item = Item("Bobby pin", "Can be used to pick locks")
+    ToothBrush:Item = Item("Tooth Brush", "Used")
+
 
 class Inventory():
     inventory:list = []
-    slots:int = 8
+    slots:int = 10
     @staticmethod
     def hasItem(item:Item) -> bool:
         for itm in Inventory.inventory:
