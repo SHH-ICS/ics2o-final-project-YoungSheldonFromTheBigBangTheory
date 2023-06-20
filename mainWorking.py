@@ -139,14 +139,14 @@ while True: #Pos 0
                 reqdItem = [Items.Null, Items.Null, Items.Null, Items.Null] 
                 pos = Interact()
 
-        if True: #upstairs
+        if True: #upstair bathroom
             if pos == 1.21:
                 Type("You see a counter with three drawers\n")
                 tempOpt = ["Search top drawer", "Search middle drawer", "Search bottom drawer", "Return to hall"]
                 tempPos = [1.211, 1.212, 1.213, 1.2]
                 reqdItem = [Items.Null, Items.Null, Items.Null, Items.Null] 
                 pos = Interact()
-            if True: #Upstairs bathroom
+            if True: #Upstairs bathroom drawers
                 if pos == 1.211:
                     Type("You pull open the top drawer and peer inside. \n")
                     tempOpt = ["Take tooth brush", "Return", "null", "null"]
@@ -154,7 +154,27 @@ while True: #Pos 0
                     tempPos = [1.21, "null", "null", "null"]
                     reqdItem = [Items.Null, Items.Null, Items.Null, Items.Null] 
                     pickUp()
+                if pos == 1.212:
+                    Type("You pull open the middle drawer and peer inside. You see nothing\n")
+                    tempOpt = ["Return"]
+                    tempPos = [1.21, "null", "null", "null"]
+                    reqdItem = [Items.Null, Items.Null, Items.Null, Items.Null] 
+                    pos = Interact()
+                if pos == 1.213:
+                    Type("You pull open the bottom drawer and peer inside. \n")
+                    tempOpt = ["Take Q-tip", "Take bobby pin", "Return", "null"]
+                    tempItem = [Items.QTip, Items.BobbyPin, Items.Return, Items.Null]
+                    tempPos = [1.21, "null", "null", "null"]
+                    reqdItem = [Items.Null, Items.Null, Items.Null, Items.Null] 
+                    pickUp()
 
+        if pos == 1.22:
+            Type("You pull open the top drawer and peer inside. \n")
+            tempOpt = ["Take tooth brush", "Return", "null", "null"]
+            tempItem = [Items.ToothBrush, Items.Return, Items.Null, Items.Null]
+            tempPos = [1.21, "null", "null", "null"]
+            reqdItem = [Items.Null, Items.Null, Items.Null, Items.Null] 
+            pickUp()
 
         if True: #Living Room
             if pos == 1.12: #Living Room

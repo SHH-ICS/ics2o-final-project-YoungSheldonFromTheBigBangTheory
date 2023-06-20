@@ -21,11 +21,12 @@ class Items():
     GoldCoin:Item = Item("Gold Coin", "A stamped coin made of gold")
     BobbyPin:Item = Item("Bobby pin", "Can be used to pick locks")
     ToothBrush:Item = Item("Tooth Brush", "Used")
+    QTip:Item = Item("Q-tip", "Just a a-tip")
 
 
 class Inventory():
     inventory:list = []
-    slots:int = 10
+    slots:int = 12
     @staticmethod
     def hasItem(item:Item) -> bool:
         for itm in Inventory.inventory:
