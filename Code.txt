@@ -1,0 +1,15 @@
+        match temp:
+            case "1":
+                pos = tempPos1
+                return pos
+            case "2":
+                pos = tempPos2
+                return pos
+            case "3":
+                pos = tempPos3
+                return pos    
+            case "4":
+                pos = tempPos4
+                return pos
+            case _:
+                print("\nInvalid")
